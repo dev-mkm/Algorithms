@@ -12,8 +12,8 @@ class Knapsack {
     }
 
     function Backtrack($x, $l) {
-        if ($l = count($this->List) + 1) {
-            if ($this->weight($x) < $this->maxweight) {
+        if ($l == count($this->List)) {
+            if ($this->weight($x) <= $this->maxweight) {
                 if($this->price($x) >= $this->optp) {
                     $this->optp = $this->price($x);
                     $this->optx = $x;
@@ -30,8 +30,8 @@ class Knapsack {
 
     function Branchandbond($x, $l) {
         $c = [];
-        if ($l = count($this->List) + 1) {
-            if ($this->weight($x) < $this->maxweight) {
+        if ($l == count($this->List)) {
+            if ($this->weight($x) <= $this->maxweight) {
                 if($this->price($x) >= $this->optp) {
                     $this->optp = $this->price($x);
                     $this->optx = $x;
@@ -54,8 +54,8 @@ class Knapsack {
     function weight($x) {
         $a = 0;
         $i = 0;
-        foreach ($this->List as $v) {
-            $a += $x[$i] * $v['w'];
+        foreach ($x as $v) {
+            $a += $v * $this->List[$i]['w'];
             $i ++;
         }
         return $a;
@@ -64,8 +64,8 @@ class Knapsack {
     function price($x) {
         $a = 0;
         $i = 0;
-        foreach ($this->List as $v) {
-            $a += $x[$i] * $v['p'];
+        foreach ($x as $v) {
+            $a += $v * $this->List[$i]['p'];
             $i ++;
         }
         return $a;

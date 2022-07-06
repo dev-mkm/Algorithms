@@ -14,7 +14,7 @@ class DFS {
 
     function solve($v) {
         $this->visited[] = $v;
-        $this->road .= $v." ";
+        $this->road = $this->road.$v." ";
 
         foreach ($this->graph[$v] as $z) {
             if (!in_array($z, $this->visited)) {
@@ -27,9 +27,9 @@ class DFS {
         $this->visited = [];
         $this->road = "";
 
-        foreach ($this->graph as $v) {
-            if (!in_array($v, $this->visited)) {
-                $this->solve($v);
+        foreach ($this->graph as $key => $v) {
+            if (!in_array($key, $this->visited)) {
+                $this->solve($key);
             }
         }
         
@@ -59,9 +59,12 @@ class BellmanFord {
         return $dist;
     }
 
-    function solve($start) {
+    function solve($start, $m) {
         $this->d = [];
         $this->d[$start] = 0;
+        for ($i=0; $i < $m - 1; $i++) { 
+            $this->d[] = 10000000;
+        }
 
         for ($i=0; $i < count($this->graph) - 1; $i++) { 
             foreach ($this->graph as $edge) {
