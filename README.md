@@ -1,40 +1,40 @@
 # Algorithms
-Strassen:
+Strassen:<br>
 POST /index.php?m=Strassen
-- data
-FirstMatrix: Json Encoded Array of Array
+-
+FirstMatrix: Json Encoded Array of Array<br>
 SecondMatrix: Json Encoded Array of Array
 
-Longest Common Subsequence:
+Longest Common Subsequence:<br>
 POST /index.php?m=Lcs
-- data
-FirstString: The First String
+- 
+FirstString: The First String<br>
 SecondString: The Second String
 
-JobSchedule:
+JobSchedule:<br>
 POST /index.php?m=JobSchedule
-- data
+- 
 jobs: Json Encoded Array of the needed time for each job
 
-Backtrack Knapsack
+Backtrack Knapsack<br>
 POST /index.php?m=Backtrack
-- data
-list: Json Encoded Array of prices and weights in following format: [{'w': 10, 'p': 20}, ...] where w is the int of weights and p is int of prices
+- 
+list: Json Encoded Array of prices and weights in following format: [{'w': 10, 'p': 20}, ...] where w is the int of weights and p is int of prices<br>
 max: int of max weight possible
 
-BranchandBound Knapsack
+BranchandBound Knapsack<br>
 POST /index.php?m=BranchandBound
-- data
-list: Json Encoded Array of prices and weights in following format: [{'w': 10, 'p': 20}, ...] where w is the int of weights and p is int of prices
+- 
+list: Json Encoded Array of prices and weights in following format: [{'w': 10, 'p': 20}, ...] where w is the int of weights and p is int of prices<br>
 max: int of max weight possible
 
-DFS
+DFS<br>
 POST /index.php?m=DFS
-- data
+- 
 graph: Json Encoded Array of Array (the matrix that represents the graph)
 
-BellmanFord Shortest Path
+BellmanFord Shortest Path<br>
 POST /index.php?m=BellmanFord
-- data
-graph: Json Encoded Array of Array (the matrix that represents the graph)
+- 
+graph: Json Encoded Array of Array (the matrix that represents the graph)<br>
 start: int of The ID of starting vertex
