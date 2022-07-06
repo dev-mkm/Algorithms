@@ -53,30 +53,30 @@ function JobScheduling ($jobs) {
 $method = $_GET['m'];
 if ($method == "Strassen" && isset($_POST['FirstMatrix']) && isset($_POST['SecondMatrix'])) {
     $matrix = new Strassen();
-    $matrix->setmatrix(1, $_POST['FirstMatrix']);
-    $matrix->setmatrix(2, $_POST['SecondMatrix']);
+    $matrix->setmatrix(1, json_decode($_POST['FirstMatrix']));
+    $matrix->setmatrix(2, json_decode($_POST['SecondMatrix']));
     echo json_decode($matrix->solve());
 }
 elseif ($method == "Lcs" && isset($_POST['FirstString']) && isset($_POST['SecondString'])) {
     echo lcs($_POST['FirstString'], $_POST['SecondString']);
 }
 elseif ($method == "JobSchedule" && isset($_POST['jobs'])) {
-    echo json_encode(JobScheduling($_POST['jobs']));
+    echo json_encode(JobScheduling(json_decode($_POST['jobs'])));
 }
 elseif ($method == "Backtrack" && isset($_POST['list']) && isset($_POST['max'])) {
     $knap = new Knapsack();
-    $knap->set($_POST['list'], $_POST['max']);
+    $knap->set(json_decode($_POST['list']), $_POST['max']);
     $knap->Backtrack([], 0);
     echo json_encode($knap->result());
 }
 elseif ($method == "BranchandBound" && isset($_POST['list']) && isset($_POST['max'])) {
     $knap = new Knapsack();
-    $knap->set($_POST['list'], $_POST['max']);
+    $knap->set(json_decode($_POST['list']), $_POST['max']);
     $knap->Branchandbond([], 0);
     echo json_encode($knap->result());
 }
 elseif ($method == "DFS" && isset($_POST['graph'])) {
-    $matrix = $_POST['graph'];
+    $matrix = json_decode($_POST['graph']);
     $graph = new DFS();
     for ($i=0; $i < count($matrix); $i++) { 
         for ($j=0; $j < count($matrix[0]); $j++) { 
@@ -88,7 +88,7 @@ elseif ($method == "DFS" && isset($_POST['graph'])) {
     echo $graph->start();
 }
 elseif ($method == "BellmanFord" && isset($_POST['graph']) && isset($_POST['start'])) {
-    $matrix = $_POST['graph'];
+    $matrix = json_decode($_POST['graph']);
     $graph = new BellmanFord();
     for ($i=0; $i < count($matrix); $i++) { 
         for ($j=0; $j < count($matrix[0]); $j++) { 
